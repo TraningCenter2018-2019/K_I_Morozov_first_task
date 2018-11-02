@@ -1,0 +1,29 @@
+[plantuml]
+---
+
+@startuml
+
+left to right direction
+skinparam packageStyle rectangle
+actor Configurator
+actor Player
+rectangle Crossword{
+	Player -- (Play crossword)
+	
+	(Create crossword) <.. (GCS)
+	(Create crossword) <.. (Enter data)
+	(Play crossword) <.. (GCSB)
+	(Play crossword) <.. (Select crossword)
+	(Select crossword) <.. (Get list of crosswords)
+	(Delete crossword) <. (Select crossword to delete)
+	Configurator -- (Delete crossword)
+	Configurator -- (Create crossword)
+	(Select crossword to delete) <.. (Get list of crosswords)
+	(Get crossword ) as (GCS) <<solved>>
+	(Get crossword) as (GCSB) <<solvable>>
+	
+}
+
+@enduml
+
+---
